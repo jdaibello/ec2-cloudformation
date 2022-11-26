@@ -1,0 +1,29 @@
+---
+Resources:
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      AvailabilityZone: us-east-1
+      ImageId: ami-0b0dcb5067f052a63
+      InstanceType: t2.micro
+      KeyName: AulaIaaS
+      SecurityGroups:
+        - !Ref SSHSecurityGroup
+      Tags:
+        - Key: Name
+          Value: CloudFormation-EC2
+  
+  ElasticIP:
+    Type: AWS::EC2:EIP
+    Properties:
+      InstanceId: !Ref EC2Instance
+
+  SSHSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Habilita acesso por SSH pela porta 22
+      SecurityGroupIngress:
+        - CidrIp: 0.0.0.0/0
+          FromPort: 22
+          IpProtocol: tcp
+          ToPort: 22
