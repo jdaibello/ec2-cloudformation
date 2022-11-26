@@ -18,7 +18,7 @@ jobs:
       - name: Deploy CloudFormation Stack
         uses: mgenteluci/cloudformation-deploy-action@v1.4.1
         env:
-          TEMPLATE: 'deploy.yml'
+          TEMPLATE: 'deploy.yaml'
           AWS_STACK_NAME: 'EC2Stack'
           AWS_REGION: 'us-east-1'
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
