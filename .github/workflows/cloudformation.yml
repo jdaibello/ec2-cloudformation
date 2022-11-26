@@ -17,3 +17,6 @@ jobs:
 
       - name: Deploy CloudFormation Stack
         uses: aws-actions/aws-cloudformation-github-deploy@v1.0.3
+        with:
+          name: EC2Stack
+          template: deploy.yaml
